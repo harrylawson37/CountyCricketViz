@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {"text":"County Cricket Average Team Runs","fontSize": 20},
+  "width": 700,
+  "height": 600,
+  "projection": {"type": "equirectangular"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/counties_test.csv"
+  },
+  "layer": [
+      {        
+      "data": {
+        "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/topo_lad.json",
+        "format": {"type": "topojson", "feature": "lad"}
+      },
+      "mark": {"type": "geoshape", "fill": "#d9dbda"}
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": "geoshape",
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "Values",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues",
+            "reverse": "true"
+          }
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "Values", "type": "quantitative", "title": "Values"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {
+      "domainWidth": 1,
+      "labelFont": "Helvetica Neue",
+      "titleFont": "Helvetica Neue"
+    },
+    "legend": {"titleFont": "Helvetica Neue"}
+  }
+}
