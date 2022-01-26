@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text":"Average Innings Runs for State Cricket Grounds","fontSize": 20, "fontWeight":"normal"},
-  "width": 600,
-  "height": 500,
+  "width": 500,
+  "height": 450,
   "projection": {"type": "equirectangular"},
   "data": {
     "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/states_runs_av.csv"
