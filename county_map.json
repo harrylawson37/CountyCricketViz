@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text":"County Cricket Average Team Runs","fontSize": 20},
+  "title": {"text":"County Cricket Average Team Runs","fontSize": 20, "fontWeight":"normal"},
   "width": 600,
   "height": 500,
   "projection": {"type": "equirectangular"},
@@ -52,6 +52,6 @@
       "labelFont": "Helvetica Neue",
       "titleFont": "Helvetica Neue"
     },
-    "legend": {"titleFont": "Helvetica Neue"}
+    "legend": {"titleFont": "Helvetica Neue", "titleFontWeight":"normal"}
   }
 }
