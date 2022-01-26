@@ -1,19 +1,32 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text":"County Cricket Average Team Runs","fontSize": 20, "fontWeight":"normal"},
-  "width": 550,
-  "height": 475,
+  "title": {"text":"Average Innings Runs for County Cricket Grounds","fontSize": 20, "fontWeight":"normal"},
+  "width": 600,
+  "height": 500,
   "projection": {"type": "equirectangular"},
   "data": {
-    "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/counties_test.csv"
+    "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/counties_runs_av.csv"
   },
+  "params": [
+    {
+      "name": "county_highlight",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2014,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
   "layer": [
       {        
       "data": {
         "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/topo_lad.json",
         "format": {"type": "topojson", "feature": "lad"}
       },
-      "mark": {"type": "geoshape", "fill": "#d9dbda"}
+      "mark": {"type": "geoshape", "fill": "#0c060b86", "stroke": "#0c060b07"}
     },
     {
       "transform": [
@@ -21,7 +34,7 @@
           "lookup": "NAME_2",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/uk_counties.json",
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
               "format": {"type": "topojson", "feature": "GBR_adm2"}
             },
             "key": "properties.NAME_2"
@@ -29,29 +42,296 @@
           "as": "geo"
         }
       ],
-      "mark": "geoshape",
+      "mark": {"type": "geoshape"},
       "encoding": {
         "shape": {"field": "geo", "type": "geojson"},
         "color": {
-          "field": "Values",
+          "field": "year_2021",
           "type": "quantitative",
           "scale": {
-            "scheme": "blues",
-            "reverse": true
-          }
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
         },
-        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "Values", "type": "quantitative", "title": "Values"}
+        "opacity": {
+          "condition": {"test": "county_highlight==2021", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2021", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2020",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2020", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2020", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2019",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2019", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2019", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2018",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2018", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2018", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2017",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2017", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2017", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2016",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2016", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2016", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2015",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2015", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2015", "type": "quantitative", "title": "Average Runs"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "NAME_2",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "format": {"type": "topojson", "feature": "GBR_adm2"}
+            },
+            "key": "properties.NAME_2"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "year_2014",
+          "type": "quantitative",
+          "scale": {
+            "reverse": true,
+            "range": "diverging",
+            "domain": [230, 490]
+          },
+          "legend": {"titleFont": "Helvetica Neue",
+                     "titleFontWeight":"normal"},
+          "title": "Runs"
+        },
+        "opacity": {
+          "condition": {"test": "county_highlight==2014", "value": 1},
+          "value": 0
+        },
+        "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "year_2021", "type": "quantitative", "title": "2021 Innings Average"}, {"field": "year_2020", "type": "quantitative", "title": "2020 Innings Average"}, {"field": "year_2019", "type": "quantitative", "title": "2019 Innings Average"}, {"field": "year_2018", "type": "quantitative", "title": "2018 Innings Average"}, {"field": "year_2017", "type": "quantitative", "title": "2017 Innings Average"}, {"field": "year_2016", "type": "quantitative", "title": "2016 Innings Average"}, {"field": "year_2015", "type": "quantitative", "title": "2015 Innings Average"}, {"field": "year_2014", "type": "quantitative", "title": "2014 Innings Average"}
         ]
       }
     }
   ],
+
   "config": {
     "view": {"stroke": "transparent"},
     "axis": {
       "domainWidth": 1,
       "labelFont": "Helvetica Neue",
       "titleFont": "Helvetica Neue"
-    },
-    "legend": {"titleFont": "Helvetica Neue", "titleFontWeight":"normal"}
+    }
   }
 }
