@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {"text":"County Cricket Average Team Runs","fontSize": 20, "fontWeight":"normal"},
-  "width": 600,
-  "height": 500,
+  "width": 550,
+  "height": 475,
   "projection": {"type": "equirectangular"},
   "data": {
     "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/counties_test.csv"
