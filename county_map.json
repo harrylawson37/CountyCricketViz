@@ -37,7 +37,7 @@
           "type": "quantitative",
           "scale": {
             "scheme": "blues",
-            "reverse": "true"
+            "reverse": true
           }
         },
         "tooltip": [{"field": "County", "type": "nominal", "title": "County Cricket Team"}, {"field": "Values", "type": "quantitative", "title": "Values"}
