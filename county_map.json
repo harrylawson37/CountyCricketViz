@@ -21,7 +21,7 @@
           "lookup": "NAME_2",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json",
+              "url": "https://raw.githubusercontent.com/harrylawson37/CountyCricketViz/main/uk_counties.json",
               "format": {"type": "topojson", "feature": "GBR_adm2"}
             },
             "key": "properties.NAME_2"
